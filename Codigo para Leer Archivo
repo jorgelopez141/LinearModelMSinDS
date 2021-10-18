@@ -1,0 +1,86 @@
+
+setwd("D:/Google Drive Web/10. MS in Data Science UofWisconsin/03. Stats with R/06. Lesson 6")
+
+baseTexto=read.delim(file='dataTable.txt',header = F)[[1]]
+
+
+baseTexto[1]
+
+
+
+
+
+listaTexto = list()
+
+x=1
+for(i in baseTexto){
+  listaTexto[[x]] = strsplit(i," ")[[1]]
+  
+  x=x+1
+}
+
+### VIENDO LAS Y
+inicianY=sapply(listaTexto,function(x){
+  x[1]=="y"
+})
+
+
+vectorY=unlist(listaTexto[inicianY])
+
+vectorY1=vectorY[vectorY!="y"]
+
+### VIENDO LAS x1
+inicianX1=sapply(listaTexto,function(x){
+  x[1]=="x1"
+})
+
+
+vectorX1=unlist(listaTexto[inicianX1])
+
+vectorX1_1=vectorX1[vectorX1!="x1"]
+
+
+### Viendo Las X2 
+
+inicianX2=sapply(listaTexto,function(x){
+  x[1]=="x2"
+})
+
+
+vectorX2=unlist(listaTexto[inicianX2])
+
+vectorX2_2=vectorX2[vectorX2!="x2"]
+
+### Viendo Las X3 
+
+inicianX3=sapply(listaTexto,function(x){
+  x[1]=="x3"
+})
+
+
+vectorX3=unlist(listaTexto[inicianX3])
+
+vectorX3_3=vectorX3[vectorX3!="x3"]
+
+
+
+### Viendo Las X4 
+
+inicianX4=sapply(listaTexto,function(x){
+  x[1]=="x4"
+})
+
+
+vectorX4=unlist(listaTexto[inicianX4])
+
+vectorX4_4=vectorX4[vectorX4!="x4"]
+
+
+df=data.frame(cbind(vectorY1,vectorX1_1,vectorX2_2,vectorX3_3,vectorX4_4))
+
+
+df$vectorY1 = as.numeric(df$vectorY1) 
+df$vectorX1_1 = as.numeric(df$vectorX1_1)
+df$vectorX2_2 = as.numeric(df$vectorX2_2)
+df$vectorX3_3 = as.numeric(df$vectorX3_3)
+df$vectorX4_4 = as.numeric(df$vectorX4_4)
